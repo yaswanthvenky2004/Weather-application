@@ -320,7 +320,7 @@
 
                 let currentTime = new Date();
                let upcomingForecasts = data.list.filter(item => new Date(item.dt_txt) > currentTime);
-               let selectedHours = upcomingForecasts.slice(0, 9); // Get next 6 upcoming forecasts
+               let selectedHours = upcomingForecasts.slice(0, 8); // Get next 6 upcoming forecasts
 
                 let todayHtml = "";
                 selectedHours.forEach(item => {
