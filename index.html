@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="searchbar">
+      <div class="searchbarparentdiv">
+        <!--border border-1 boder -->
+        <input type="text" name="" id="" placeholder="Search City" class="inputfield" />
+        <img src="./searchicon.png" alt="" width="30px" class="searchicon" onclick="fetchData()" />
+      </div>
+    </div>
+
+    <div class="maincontentparentdiv d-flex">
+      <div class="leftdiv">
+        <div class="currentTempdiv leftchild p-3 d-flex flex-column gap-2">
+          <h6 class="m-0" id="cityname">City Name</h6>
+          <h3 class="m-0" ><span id="citytemp">0</span> &deg;C</h3>
+          <h6 class="m-0" id="skydesc">Sky Description</h6>
+          <hr class="line" />
+          <div class="d-flex gap-2">
+            <img src="./calender.jpg" alt="" width="22px" />
+            <h6 class="m-0" id="date">Date</h6>
+          </div>
+          <div class="d-flex gap-2">
+            <img src="./time.jpg" alt="" width="22px" />
+            <h6 class="m-0 " id="time">Time</h6>
+          </div>
+        </div>
+
+        <div class="nextfivedays leftchild p-2 d-flex flex-column gap-1">
+          <h6 class="m-0" id="comingfivedays">Coming 5 Days</h6>
+          <div id="forecastContainer" class="d-flex flex-column gap-1"></div>
+        </div>
+      </div>
+          <!-- <div class="d-flex flex-column gap-1">
+            <div
+              class="firstrow d-flex gap-2 align-items-center justify-content-between"
+            >
+              <div class="d-flex gap-1 align-items-center">
+                <p style="font-size: 25px" class="m-0">⛅</p>
+                <h6 class="m-0">7&deg;C</h6>
+              </div>
+              <h6 class="m-0">Saturday</h6>
+              <h6 class="m-0">26-06-2025</h6>
+            </div>
+            <div
+              class="firstrow d-flex gap-2 align-items-center justify-content-between"
+            >
+              <div class="d-flex gap-1 align-items-center">
+                <p style="font-size: 25px" class="m-0">⛅</p>
+                <h6 class="m-0">7&deg;C</h6>
+              </div>
+              <h6 class="m-0">Saturday</h6>
+              <h6 class="m-0">26-06-2025</h6>
+            </div>
+            <div
+              class="firstrow d-flex gap-2 align-items-center justify-content-between"
+            >
+              <div class="d-flex gap-1 align-items-center">
+                <p style="font-size: 25px" class="m-0">⛅</p>
+                <h6 class="m-0">7&deg;C</h6>
+              </div>
+              <h6 class="m-0">Saturday</h6>
+              <h6 class="m-0">26-06-2025</h6>
+            </div>
+            <div
+              class="firstrow d-flex gap-2 align-items-center justify-content-between"
+            >
+              <div class="d-flex gap-1 align-items-center">
+                <p style="font-size: 25px" class="m-0">⛅</p>
+                <h6 class="m-0">7&deg;C</h6>
+              </div>
+              <h6 class="m-0">Saturday</h6>
+              <h6 class="m-0">26-06-2025</h6>
+            </div>
+            <div
+              class="firstrow d-flex gap-2 align-items-center justify-content-between"
+            >
+              <div class="d-flex gap-1 align-items-center">
+                <p style="font-size: 25px" class="m-0">⛅</p>
+                <h6 class="m-0">7&deg;C</h6>
+              </div>
+              <h6 class="m-0">Saturday</h6>
+              <h6 class="m-0">26-06-2025</h6>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="rightdiv">
+        <div class="rightrows rowone d-flex gap-2 justify-content-between align-items-center">
+          <div class="metric d-flex gap-3">
+            <img src="./humidity-removebg-preview.png" alt="" width="35px">
+            <div>
+              <h6 class="m-0">Humidity</h6>
+              <h6 class="m-0" id="humidity">Metric Value</h6>
+            </div>
+          </div>
+           <div class="metric d-flex gap-3">
+            <img src="./wave-removebg-preview.png" alt="" width="35px">
+            <div>
+              <h6 class="m-0">Pressure</h6>
+              <h6 class="m-0" id="pressure">Metric Value</h6>
+            </div>
+          </div>
+           <div class="metric d-flex gap-3">
+            <img src="./feelslike-removebg-preview.png" alt="" width="35px">
+            <div>
+              <h6 class="m-0">FeelsLike</h6>
+              <h6 class="m-0" id="feelsLike">Metric Value</h6>
+            </div>
+          </div>
+           <div class="metric d-flex gap-3">
+            <img src="./vsibility-removebg-preview.png" alt="" width="35px">
+            <div>
+              <h6 class="m-0">Visibility</h6>
+              <h6 class="m-0" id="visibility">Metric Value</h6>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="rightrows rowtwo d-flex gap-2 justify-content-between align-items-center ">
+          <div class="AQI rowtwodiv p-3 d-flex flex-column gap-3 ">
+            <h5>Air Quality Index(AQI)</h5>
+            <div class="d-flex gap-2 align-items-center justify-content-between ">
+              <img src="./airquality.png" alt="" width="35px">
+              <div class="text-content">
+                <h6 id="co">AQI Metric</h6>
+                <h6 id="covalue">0</h6>
+              </div>
+              <div class="text-content">
+                <h6 id="o3">AQI Metric</h6>
+                <h6 id="o3value">0</h6>
+              </div>
+              <div class="text-content">
+                <h6 id="no2">AQI Metric</h6>
+                <h6 id="no2value">0</h6>
+              </div>
+              <div class="text-content">
+                <h6 id="so2">AQI Metric</h6>
+                <h6 id="so2value">0</h6>
+              </div>
+            </div>
+          </div>
+          <div class="sunrise rowtwodiv p-3 ">
+            <h5>Sunrise & Sunset</h5>
+            <div class="d-flex gap-2 align-items-center justify-content-between">
+            <div class="d-flex  gap-2">
+              <img src="./sun.png" alt="" width="70px">
+              <div class="d-flex flex-column">
+                <h5 >Sunrise</h5>
+                <h5  id="sunriseTime">6:00Am</h5>
+              </div>
+            </div>
+             <div class="d-flex gap-2">
+              <img src="./moon-removebg-preview.png" alt="" width="50px" height="50px">
+              <div class="d-flex flex-column">
+                <h5 class="m-0">Sunset</h5>
+                <h5 class="m-0" id="sunsetTime">7:00Pm</h5>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+
+        <div class="rightrows rowthree d-flex flex-column gap-2">
+          <h5 class="m-0 ">Today</h5>
+          <div class="d-flex  todaytempParentDiv " id="todayTempContainer">
+            <!-- <div class="todaytemp ">
+              <h6 class="m-0">9.00 Am</h6>
+              <img src="./cloudy-removebg-preview.png" alt="" width="35px">
+              <h5 class="m-0">5 &deg;C</h5>
+            </div>
+             <div class="todaytemp">
+              <h6 class="m-0">9.00 Am</h6>
+              <img src="./cloudy-removebg-preview.png" alt="" width="35px">
+              <h5 class="m-0">5 &deg;C</h5>
+            </div>
+             <div class="todaytemp">
+              <h6 class="m-0">9.00 Am</h6>
+              <img src="./cloudy-removebg-preview.png" alt="" width="35px">
+              <h5 class="m-0">5 &deg;C</h5>
+            </div>
+             <div class="todaytemp">
+              <h6 class="m-0">9.00 Am</h6>
+              <img src="./cloudy-removebg-preview.png" alt="" width="35px">
+              <h5 class="m-0">5 &deg;C</h5>
+            </div>
+             <div class="todaytemp">
+              <h6 class="m-0">9.00 Am</h6>
+              <img src="./cloudy-removebg-preview.png" alt="" width="35px">
+              <h5 class="m-0">5 &deg;C</h5>
+            </div>
+            <div class="todaytemp">
+              <h6 class="m-0">9.00 Am</h6>
+              <img src="./cloudy-removebg-preview.png" alt="" width="35px">
+              <h5 class="m-0">5 &deg;C</h5>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+      crossorigin="anonymous"
+    ></script>
+   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+     function dateformat(timestamp){
+              const date=new Date(timestamp * 1000);
+              console.log(date.toUTCString());
+              console.log(date.toLocaleString());
+              return date.toLocaleString();
+              
+             }
+             //AQI function
+      async function fetchAQIData(lat,lon) {
+          let fetchAQIData=await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=e4f05493620b2f617403170a42ca6481`)
+          let formattedData=await fetchAQIData.json();
+          console.log(formattedData)
+          let list=formattedData.list[0].components;
+          $("#co")[0].innerText="CO"
+          $("#covalue")[0].innerText=list.co
+           $("#o3")[0].innerText="O3"
+          $("#o3value")[0].innerText=list.o3
+           $("#no2")[0].innerText="NO2"
+          $("#no2value")[0].innerText=list.no2
+           $("#so2")[0].innerText="SO2"
+          $("#so2value")[0].innerText=list.so2
+
+      }       
+
+      
+        async function nextFiveDays(lat, lon) {
+
+            const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=d28274b5fe592e1f1e558103a5e66370&units=metric`;
+            try {
+                const response = await fetch(apiUrl);
+                //this resonse.ok gives successful msg(true) down specifies if not true then
+                if (!response.ok) {
+                    throw new Error("Failed to fetch weather data");
+                }
+                const data = await response.json();
+
+                let dailyForecasts = {};
+
+                // Extract unique daily data 
+                //foreach has a function in his parameter so it is called as callback function.here we can also write function(item)
+                data.list.forEach(item => {
+                    let date = item.dt_txt.split(" ")[0]; // Extract date only
+                    if (!dailyForecasts[date]) {
+                        dailyForecasts[date] = {
+                            temp: item.main.temp.toFixed(1), // Round temperature
+                            icon: item.weather[0].icon, // Weather icon
+                            day: new Date(date).toLocaleDateString('en-US', { weekday: 'long' }) // Get day name
+                        };
+                    }
+                });
+
+                // Get first 5 unique days
+                let forecastHtml = "";
+                Object.keys(dailyForecasts).slice(0, 5).forEach(date=> {
+                    let forecast = dailyForecasts[date];
+                    forecastHtml += `
+                        <div class="forecastRow d-flex align-items-center justify-content-between">
+                            <div class="d-flex gap-1 align-items-center">
+                               <img src="https://openweathermap.org/img/wn/${forecast.icon}@2x.png" alt="" width="40px" />
+                                <h6 class="m-0">${forecast.temp} &deg;C</h6>
+                            </div>
+                            <h6 class="m-0">${forecast.day}</h6>
+                            <h6 class="m-0">${date}</h6>
+                        </div>
+                    `;
+                });
+
+                document.getElementById("forecastContainer").innerHTML = forecastHtml;
+
+            } catch (error) {
+                console.error(error);
+                alert("Failed to retrieve weather data. Please check your API key.");
+            }
+        }
+
+        
+        async function todayTemps(lat, lon) {
+            const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=d28274b5fe592e1f1e558103a5e66370&units=metric`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch weather data");
+                }
+                const data = await response.json();
+
+                let currentTime = new Date();
+               let upcomingForecasts = data.list.filter(item => new Date(item.dt_txt) > currentTime);
+               let selectedHours = upcomingForecasts.slice(0, 9); // Get next 6 upcoming forecasts
+
+                let todayHtml = "";
+                selectedHours.forEach(item => {
+                    let time = new Date(item.dt_txt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }); // Format time
+                    let temp = item.main.temp.toFixed(1); // Round temperature
+                    let icon = item.weather[0].icon; // Weather icon
+
+                    todayHtml += `
+                        <div class="todaytemp">
+                            <h6 class="m-0">${time}</h6>
+                            <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="" width="40px" />
+                            <h5>${temp}&deg;C</h5>
+                        </div>
+                    `;
+                });
+
+                document.getElementById("todayTempContainer").innerHTML = todayHtml;
+
+            } catch (error) {
+                console.error(error);
+                alert("Failed to retrieve weather data. Please check your API key.");
+            }
+        }
+
+
+     async function fetchData(){
+      //  left div first box
+             
+
+      let cityname=document.getElementsByClassName('inputfield')[0].value;
+      console.log(cityname)
+      let requestData= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=e4f05493620b2f617403170a42ca6481&units=metric`);
+        let formattedData= await requestData.json();
+        console.log("Formatted Data:",formattedData);
+        let responsecityname=formattedData.name;
+        let responsetemp=formattedData.main.temp;
+        let skydescription=formattedData.weather[0].description;
+
+        $('#cityname')[0].innerText=responsecityname;
+        $('#citytemp')[0].innerText=responsetemp;
+        $('#skydesc')[0].innerText=skydescription;
+         $("#humidity")[0].innerText=formattedData.main.humidity
+            $("#pressure")[0].innerText=formattedData.main.pressure
+            $("#feelsLike")[0].innerText=formattedData.main.feels_like
+            $("#visibility")[0].innerText=formattedData.visibility
+        //updating date and time
+        let properdate=dateformat(formattedData.dt);
+        splitedDate=properdate.split(',')[0];
+        splitedTime=properdate.split(',')[1];
+        $('#date')[0].innerText=splitedDate
+        $('#time')[0].innerText=splitedTime
+        
+        //AQI index
+        let lat=formattedData.coord.lat;
+        let lon=formattedData.coord.lon;
+        fetchAQIData(lat,lon);
+         nextFiveDays(lat, lon);
+         todayTemps(lat, lon);
+
+        
+
+        
+       //updating sunrise and sunset
+        let sunrisetimestamp=formattedData.sys.sunrise
+        let sunsetimestamp=formattedData.sys.sunset
+        let propersunrisetime=dateformat(sunrisetimestamp).split(',')[1]
+        let propersunsetime=dateformat(sunsetimestamp).split(',')[1]
+       
+        $('#sunriseTime')[0].innerText=propersunrisetime
+        $('#sunsetTime')[0].innerText=propersunsetime
+    }
+  </script>
+  </body>
+</html>

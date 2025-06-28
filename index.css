@@ -1,0 +1,182 @@
+body{
+    font-family: "Comfortaa", sans-serif;
+    color:white;
+    background: url(./background.jpg);
+    background-position: bottom;
+    background-attachment: fixed;
+}
+.searchbar{
+    background-color:black;
+    height:10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchbarparentdiv{
+    width: 50%;
+    position: relative;
+}
+.inputfield{
+    width: 100%;
+    border-radius: 25px;
+    padding: 10px;
+    outline: none;
+    
+}
+/* .inputfield{
+    outline: none;
+} */
+.searchicon{
+    position:absolute;
+    right: 10px;
+    top:6px;
+}
+.searchicon:hover{
+    cursor: pointer;
+}
+/* main content */
+
+.maincontentparentdiv{
+    height: 90vh;
+    flex-direction: row;
+    /* border: 6px solid black; */
+    
+}
+.leftdiv{
+    width: 30%;
+   /* border: 6px solid black; */
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+.leftchild{
+    background: rgba(212, 212, 212, 0.4);
+    width: 85%;
+    height: 40vh;
+    margin: auto;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+
+}
+.currentTempdiv h6{
+    font-size: larger;
+}
+#cityname{
+    font-size: x-large;
+}
+#citytemp{
+    font-size: xx-large;
+}
+#comingfivedays{
+    font-size: x-large;
+}
+
+.rightdiv{
+    width: 100%;
+   /* border: 6px solid red; */
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+.rightrows{
+    height: 27vh;
+    /* border: 4px solid white; */
+    
+}
+.metric{
+    background: rgba(212, 212, 212, 0.4);
+    width: fit-content;
+    padding: 5% 2%;
+    border-radius: 15px;
+    align-items: center;
+}
+.rowtwodiv{
+    background: rgba(212, 212, 212, 0.4);
+    width: 45%;
+    height: 85%;
+    border-radius: 15px;
+}
+.todaytemp{
+     background: rgba(212, 212, 212, 0.4);
+   width: fit-content;
+   padding: 15px;
+   border-radius: 15px;
+   backdrop-filter: blur(15px);
+   margin: 0px 20px;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+
+}
+
+/* mobile version */
+
+@media only screen and (max-width:767px) {
+    
+
+.leftdiv{
+    width: 100%;
+   /* border: 6px solid black; */
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   margin-top: 15px;
+}
+
+.rightdiv{
+    width: 100%;
+}
+
+
+    .maincontentparentdiv{
+    height: 90vh;
+    flex-direction: column;
+    /* border: 6px solid black; */
+    
+}
+.searchbar{
+    width: 100%;
+   
+}
+.searchbarparentdiv{
+    width: 85%;
+    position: relative;
+}
+.rowone{
+    flex-wrap: wrap;
+   width: 86%;
+   margin: auto;
+}
+.rowtwo{
+    flex-direction: column;
+    gap: 10px;
+}
+.rowtwodiv{
+   
+    width: 85%;
+   
+}
+
+.todaytempParentDiv{
+    width: 100%;
+    flex-wrap: wrap;
+    margin:auto;
+    gap: 4px;
+
+}
+.rightrows{
+    height: 30vh;
+    /* border: 4px solid white; */
+    
+}
+.rowthree h5{
+    
+   text-align: center;
+}
+}
